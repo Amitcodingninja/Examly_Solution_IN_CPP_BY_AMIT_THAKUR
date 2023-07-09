@@ -1,18 +1,17 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 int main()
 {
-    int N, M, K;
-    cin >> N >> M >> K;
-    int diff = abs(N - M);
-    if (K >= diff)
-    {
-        cout << 0 << endl;
-    }
+    int n, m, k;
+    cin >> n >> m >> k;
+    if (n < m)
+        n = n + k;
     else
-    {
-        cout << diff - K << endl;
-    }
+        m = m + k;
+    if (n > m)
+        k = n - m;
+    else
+        k = m - n;
+    cout << k;
     return 0;
 }
