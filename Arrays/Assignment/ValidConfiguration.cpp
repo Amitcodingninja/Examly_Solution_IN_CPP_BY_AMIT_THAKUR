@@ -1,0 +1,87 @@
+// You are using GCC
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n, i, j, s = 1;
+    cin >> n;
+    int a[n][n];
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            if (a[i][j] == 1)
+            {
+                if ((a[i - 1][j] != 0) && (i > 0))
+                {
+                    s = 0;
+                    break;
+                }
+                if ((a[i + 1][j] != 0) && (i < n - 1))
+                {
+                    s = 0;
+                    break;
+                }
+                if ((a[i][j + 1] != 0) && (j < n - 1))
+                {
+                    s = 0;
+                    break;
+                }
+                if ((a[i][j - 1] != 0) && (j > 0))
+                {
+                    s = 0;
+                    break;
+                }
+            }
+            if ((a[i][j] > 0) && (a[i][j] < 11))
+            {
+                if ((a[i + 2][j] < 11) && (a[i + 2][j] > 0) && (i < n - 2))
+                {
+                    if (a[i + 1][j] != 0)
+                    {
+                        s = 0;
+                        break;
+                    }
+                }
+                if ((a[i][j + 2] < 11) && (a[i][j + 2] > 0) && (j < n - 2))
+                {
+                    if (a[i][j + 1] != 0)
+                    {
+                        s = 0;
+                        break;
+                    }
+                }
+                if ((a[i - 1][j - 1] < 11) && (a[i - 1][j - 1] > 0) && (i > 0) && (j > 0))
+                {
+                    if ((a[i - 1][j] != 0) || (a[i][j - 1] != 0))
+                    {
+                        s = 0;
+                        break;
+                    }
+                }
+                if ((a[i + 1][j - 1] < 11) && (a[i + 1][j - 1] > 0) && (i < n - 1) && (j > 0))
+                {
+                    if ((a[i + 1][j] != 0) || (a[i][j - 1] != 0))
+                    {
+                        s = 0;
+                        break;
+                    }
+                }
+            }
+        }
+        if (s == 0)
+        {
+            break;
+        }
+    }
+    (s == 0) ? cout << "No" : cout << "Yes";
+    return 0;
+}
